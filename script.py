@@ -1,4 +1,4 @@
-#Line 12 (Name), 15(RAM), 16(RAM), 17(RAM), 20(CPU), 24(CPU), 25(CPU), 26(CPU), 29(BIOS), 30(BIOS), 32(BIOS mode), 69(ISO Path)
+#Line 12 (Name), 15(RAM), 16(RAM), 17(RAM), 20(CPU), 24(CPU), 25(CPU), 26(CPU), 29(BIOS), 30(BIOS), 32(BIOS mode), 57(Disk Size), 69(ISO Path)
 
 vm_domain_type = r"kvm" #Hardware Boost is "kvm", full emu (extremely slow) is "qemu", Xen back is "xen", linux container is "lxc", Parallels back is "parallels", FreeBSD bhyve back is "bhyve", OpenVZ container is "vz".
 
@@ -53,27 +53,27 @@ vm_disk_driver_cache = r"none" #No cache is "none", direct sync is "directsync",
 vm_disk_driver_io = r"native" #Linux native AIO is "native", thread pool is "threads", Linux io_uring is "io_uring".
 
 # Dynamically set disk image path based on vm_name, decoupled from memory size
-vm_disk_source_file = f"/var/lib/libvirt/images/pool/{vm_name}.qcow2" #Disk image absolute path string based on vm_name.
+vm_disk_source_file = rf"/var/lib/libvirt/images/pool/{vm_name}.qcow2" #Disk image absolute path string based on vm_name.
 vm_disk_size = r"64G" # Independent hard disk storage size configuration, separated from RAM allocation.
 
-vm_disk_target_dev = r"vda" #Virtio bus is vd[a-z], SATA/SCSI is sd[a-z], IDE is hd[a-z], Xen is xvd[a-z].
-vm_disk_target_bus = r"virtio" #Virtio is "virtio", SCSI is "scsi", SATA is "sata", IDE is "ide", USB is "usb", Xen is "xen".
-vm_disk_logical_block_size = r"4096" #Logical block size: "512" or "4096".
-vm_disk_physical_block_size = r"4096" #Physical block size: "512" or "4096".
+vm_disk_target_dev = r"sda" #Virtio bus is vd[a-z], SATA/SCSI is sd[a-z], IDE is hd[a-z], Xen is xvd[a-z].
+vm_disk_target_bus = r"sata" #Virtio is "virtio", SCSI is "scsi", SATA is "sata", IDE is "ide", USB is "usb", Xen is "xen".
+vm_disk_logical_block_size = r"512" #Logical block size: "512" or "4096".
+vm_disk_physical_block_size = r"512" #Physical block size: "512" or "4096".
 vm_disk_boot_order = r"1" #Boot order positive integer.
 
 vm_cdrom_type = r"file" #File image is "file".
 vm_cdrom_device = r"cdrom" #CD/DVD device is "cdrom".
 vm_cdrom_driver_name = r"qemu" #Driver name is "qemu".
 vm_cdrom_driver_type = r"raw" #Raw format is "raw".
-vm_cdrom_source_file = r"/var/lib/libvirt/images/_____.iso" #ISO file absolute path string.
-vm_cdrom_target_dev = r"sda" #Target device is sda.
+vm_cdrom_source_file = r"/var/lib/libvirt/images/en_windows_10_enterprise_ltsc_2019_x64_dvd_5795bb03.iso" #ISO file absolute path string.
+vm_cdrom_target_dev = r"sdb" #Target device is sda.
 vm_cdrom_target_bus = r"sata" #Target bus is "sata", "ide", or "scsi".
 vm_cdrom_boot_order = r"2" #Boot order positive integer.
 
 vm_net_type = r"network" #Libvirt virtual network is "network", bridge is "bridge", MacVTap direct is "direct", user mode is "user", PCI hostdev is "hostdev", multicast is "mcast", TCP server is "server", TCP client is "client".
 vm_net_source = r"default" #Libvirt network name string.
-vm_net_model = r"virtio" #Virtio is "virtio", Intel Gigabit is "e1000" or "e1000e", Realtek is "rtl8139", NE2000 is "ne2k_pci", AMD PCnet is "pcnet", VMware vmxnet3 is "vmxnet3".
+vm_net_model = r"e1000" #Virtio is "virtio", Intel Gigabit is "e1000" or "e1000e", Realtek is "rtl8139", NE2000 is "ne2k_pci", AMD PCnet is "pcnet", VMware vmxnet3 is "vmxnet3".
 
 vm_graphics_type = r"vnc" #VNC protocol is "vnc", SPICE is "spice", SDL local window is "sdl", headless EGL is "egl-headless", local desktop is "desktop", RDP export is "rdpexport".
 vm_graphics_port = r"-1" #Auto assign is "-1", manual port is 5900-5999.
@@ -82,7 +82,7 @@ vm_graphics_listen = r"127.0.0.1" #Listen IP address string.
 vm_graphics_listen_type = r"address" #Address is "address", network is "network", Unix socket is "socket".
 
 vm_video_model = r"qxl" #SPICE recommended is "qxl", generic VGA is "vga", paravirtualized GPU is "virtio", Cirrus is "cirrus", GPU passthrough is "gpu", none is "none".
-vm_video_vram = r"32768" #VRAM size in KB positive integer.
+vm_video_vram = r"65536" #VRAM size in KB positive integer.
 vm_video_heads = r"1" #Display heads positive integer.
 
 vm_input_tablet_bus = r"usb" #Tablet bus is "usb", "ps2", "virtio", or "xen".
