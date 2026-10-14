@@ -32,7 +32,7 @@ vm_virt_type = r"hvm" #Kvm full virt. is "hvm", Xen half virt. is "xenpv", Xen f
 if vm_firmware == r"efi":
     vm_secure = r"no" #Enable or Disable Secure Boot, "yes" or "no".
 
-vm_boot_device = r"hd" #Harddisk is "hd", CD/DVD is "cdrom", PXE is "network", floppydisk is "fd".
+#vm_boot_device = r"hd" #Harddisk is "hd", CD/DVD is "cdrom", PXE is "network", floppydisk is "fd".
 
 vm_features_acpi = True #Enable ACPI, True or False.
 vm_features_apic = True #Enable APIC, True or False.
@@ -81,7 +81,7 @@ vm_graphics_autoport = r"yes" #Auto port is "yes" or "no".
 vm_graphics_listen = r"127.0.0.1" #Listen IP address string.
 vm_graphics_listen_type = r"address" #Address is "address", network is "network", Unix socket is "socket".
 
-vm_video_model = r"qxl" #SPICE recommended is "qxl", generic VGA is "vga", paravirtualized GPU is "virtio", Cirrus is "cirrus", GPU passthrough is "gpu", none is "none".
+vm_video_model = r"vga" #SPICE recommended is "qxl", generic VGA is "vga", paravirtualized GPU is "virtio", Cirrus is "cirrus", GPU passthrough is "gpu", none is "none".
 vm_video_vram = r"65536" #VRAM size in KB positive integer.
 vm_video_heads = r"1" #Display heads positive integer.
 
@@ -229,7 +229,7 @@ xml_parts.append(os_line)
 xml_parts.append(f"    <type arch='{vm_arch}' machine='{vm_machine}'>{vm_virt_type}</type>")
 if vm_firmware == r"efi":
     xml_parts.append(f"    <loader secure='{vm_secure}'/>")
-xml_parts.append(f"    <boot dev='{vm_boot_device}'/>")
+#xml_parts.append(f"    <boot dev='{vm_boot_device}'/>")
 xml_parts.append(f"  </os>")
 
 # Features Section
